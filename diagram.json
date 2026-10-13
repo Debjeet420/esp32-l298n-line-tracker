@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "author": "ESP32 Line Follower with Servos and LEDs",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -24.1, "left": 33.4, "attrs": {} },
+    {
+      "type": "chip-l298n",
+      "id": "l298n",
+      "top": 31,
+      "left": -118.98,
+      "rotate": 270,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn_left",
+      "top": 236.6,
+      "left": -76.8,
+      "attrs": { "color": "blue", "label": "Left IR Sensor" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn_right",
+      "top": 227,
+      "left": 172.8,
+      "attrs": { "color": "blue", "label": "Right IR Sensor" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_L_fwd",
+      "top": -205.2,
+      "left": -92.2,
+      "attrs": { "color": "green", "label": "L FWD" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_L_rev",
+      "top": -205.2,
+      "left": -15.4,
+      "attrs": { "color": "red", "label": "L REV" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_R_fwd",
+      "top": -205.2,
+      "left": 99.8,
+      "attrs": { "color": "green", "label": "R FWD" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_R_rev",
+      "top": -205.2,
+      "left": 167,
+      "attrs": { "color": "red", "label": "R REV" }
+    }
+  ],
+  "connections": [
+    [ "esp:3V3", "btn_left:1.a", "red", [ "v0" ] ],
+    [ "esp:D18", "btn_left:2.a", "green", [ "v0" ] ],
+    [ "esp:3V3", "btn_right:1.a", "red", [ "v0" ] ],
+    [ "esp:D19", "btn_right:2.a", "blue", [ "v0" ] ],
+    [ "esp:5V", "l298n:VCC", "red", [ "v0" ] ],
+    [ "esp:GND", "l298n:GND", "black", [ "v0" ] ],
+    [ "esp:D32", "l298n:ENA", "purple", [ "v0" ] ],
+    [ "esp:D33", "l298n:ENB", "purple", [ "v0" ] ],
+    [ "esp:GND", "led_L_fwd:C", "black", [ "v0" ] ],
+    [ "esp:GND", "led_L_rev:C", "black", [ "v0" ] ],
+    [ "esp:GND", "led_R_fwd:C", "black", [ "v0" ] ],
+    [ "esp:GND", "led_R_rev:C", "black", [ "v0" ] ],
+    [ "btn_left:1.l", "esp:3V3", "red", [ "h0", "v-57.6", "h230.4", "v-57.6" ] ],
+    [ "btn_right:1.l", "esp:3V3", "red", [ "h-19.2", "v-86.4" ] ],
+    [ "btn_left:2.l", "esp:D18", "green", [ "h-19.2", "v-67", "h259.2", "v-144" ] ],
+    [ "btn_right:2.l", "esp:D19", "blue", [ "h-9.6", "v-38.2", "h9.6", "v-172.8" ] ],
+    [ "l298n:5V", "esp:VIN", "red", [ "v-30.61", "h-57.6", "v192", "h153.6", "v-38.4" ] ],
+    [ "l298n:GND", "esp:GND.2", "#8f4814", [ "v-21.01", "h-38.4", "v172.8", "h134.4", "v-28.8" ] ],
+    [ "l298n:IN1", "esp:D25", "green", [ "v38.4", "h76.8", "v-19.2" ] ],
+    [ "l298n:IN2", "esp:D26", "orange", [ "v28.8", "h57.6", "v-67.2" ] ],
+    [ "l298n:IN3", "esp:D27", "green", [ "v19.2", "h38.4", "v-48" ] ],
+    [ "l298n:IN4", "esp:D14", "orange", [ "v9.6", "h57.6", "v-28.8" ] ],
+    [ "l298n:EN A", "esp:VIN", "red", [ "v57.6", "h105.6", "v-38.4" ] ],
+    [ "l298n:EN B", "esp:VIN", "red", [ "v57.6", "h57.6", "v-28.8" ] ],
+    [ "led_L_fwd:A", "l298n:OUT1", "green", [ "v0" ] ],
+    [ "led_L_rev:A", "l298n:OUT2", "red", [ "v19.2", "h-67.2" ] ],
+    [ "led_R_fwd:A", "l298n:OUT3", "green", [ "v28.8", "h-172.8" ] ],
+    [ "led_R_rev:A", "l298n:OUT4", "red", [ "v38.4", "h-230.4" ] ],
+    [ "led_L_rev:C", "esp:GND.2", "#8f4814", [ "v192", "h19.6", "v96" ] ],
+    [ "led_L_fwd:C", "esp:GND.2", "#8f4814", [ "v67.2", "h77.2", "v124.8", "h19.2", "v96" ] ],
+    [
+      "led_R_fwd:C",
+      "esp:GND.2",
+      "#8f4814",
+      [ "v57.6", "h0.4", "v9.6", "h-115.2", "v124.8", "h19.2", "v96" ]
+    ],
+    [ "led_R_rev:C", "esp:GND.2", "#8f4814", [ "v67.2", "h-182", "v124.8", "h19.2", "v96" ] ]
+  ],
+  "dependencies": { "chip-l298n": "github:drf5n/Wokwi-Chip-L298N@1.0.5" }
+}
