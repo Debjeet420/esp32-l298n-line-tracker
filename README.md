@@ -1,5 +1,7 @@
 # ESP32 Line Following Robot (Wokwi Simulation)
 
+[![Simulate on Wokwi](https://img.shields.io/badge/Wokwi-Live%20Simulation-brightgreen?style=for-the-badge&logo=cpu)](https://wokwi.com/projects/477060189995282433)
+
 An autonomous Line Following Robot designed using an **ESP32 DevKit V1**, an **L298N Motor Driver breakout chip**, **IR sensors (simulated with pushbuttons)**, and **4 status LEDs** for visual directional feedback.
 
 ---
